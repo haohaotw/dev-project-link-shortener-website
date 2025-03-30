@@ -1,0 +1,31 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+  <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
+    <h1 class="text-2xl font-bold text-center text-gray-800">URL Shortener Tool</h1>
+
+    <div class="mt-4">
+      <input
+        type="text"
+        [(ngModel)]="longUrl"
+        placeholder="Enter URL..."
+        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <button
+      (click)="shortenUrl()"
+      class="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
+      Generate Short URL
+    </button>
+
+    <div *ngIf="shortUrl" class="mt-4 p-3 bg-gray-200 text-center rounded-lg flex items-center justify-between">
+      <a [href]="shortUrl" class="text-blue-500 underline flex-1 text-left" target="_blank">
+        {{ shortUrl }}
+      </a>
+      <button
+        (click)="copyToClipboard()"
+        class="ml-3 bg-gray-500 text-white px-3 py-1 rounded-lg hover:bg-gray-600 transition">
+        {{ copied ? 'Copied' : 'Copy' }}
+      </button>
+    </div>
+  </div>
+</div>
